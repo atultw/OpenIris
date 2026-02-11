@@ -88,8 +88,8 @@ def find_pupil_blob(
     for contour in contours:
         area = cv2.contourArea(contour)
         
-        # Skip if area is too small
-        if area < min_pup_area * scale_down_x:
+        # Skip if area is too small (scale by both dimensions)
+        if area < min_pup_area * scale_down_x * scale_down_y:
             continue
         
         # Get bounding box

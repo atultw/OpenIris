@@ -147,8 +147,7 @@ class EyeTracker:
         Yields:
             Tuple of (EyeData, frame) for each processed frame.
         """
-        self._frame_number = 0
-        frames_processed = 0
+        self.reset()  # Reset frame counter
         fps = video.get(cv2.CAP_PROP_FPS)
         if fps <= 0:
             fps = 30.0  # Default FPS if not available
@@ -158,16 +157,15 @@ class EyeTracker:
             if not ret:
                 break
             
-            # Calculate timestamp
-            timestamp = frames_processed / fps
+            # Calculate timestamp from current frame number (before increment)
+            timestamp = self._frame_number / fps
             
-            # Track this frame
+            # Track this frame (increments _frame_number internally)
             result = self.track_frame(frame, roi, timestamp)
             
             yield result, frame
             
-            frames_processed += 1
-            if max_frames is not None and frames_processed >= max_frames:
+            if max_frames is not None and self._frame_number >= max_frames:
                 break
     
     def reset(self):

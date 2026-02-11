@@ -183,6 +183,8 @@ def find_eyelids_hough(
         sob_x = cv2.Sobel(roi_img, cv2.CV_64F, 2, 0, ksize=5)
         
         # Combine based on corner angle range
+        # Note: The angle calculation uses arcsin on a value derived from the 
+        # cos_range as a heuristic for combining Sobel filters (matching original C# code)
         angle_ranges = {
             "top_left": (-0.2, 0.7),
             "top_right": (-0.7, 0.2),

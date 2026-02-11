@@ -6,10 +6,10 @@ from setuptools import setup, find_packages
 from pathlib import Path
 
 # Read README for long description
-readme_path = Path(__file__).parent / "README.md"
+readme_path = Path(__file__).parent / "python_openiris" / "README.md"
 long_description = ""
 if readme_path.exists():
-    long_description = readme_path.read_text()
+    long_description = readme_path.read_text(encoding="utf-8")
 
 setup(
     name="python_openiris",

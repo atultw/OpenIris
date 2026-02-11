@@ -15,7 +15,7 @@ from .data import (
     EyelidData,
     EyeData,
 )
-from .tracker import EyeTracker
+from .tracker import EyeTracker, draw_eye_overlay
 from .settings import EyeTrackerSettings
 
 __version__ = "1.0.0"
@@ -27,4 +27,5 @@ __all__ = [
     "CornealReflectionData",
     "EyelidData",
     "EyeData",
+    "draw_eye_overlay",
 ]

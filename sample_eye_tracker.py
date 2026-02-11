@@ -167,9 +167,8 @@ def main():
             # Display
             cv2.imshow("OpenIris Eye Tracker", overlay_frame)
             
-            # Handle key input
-            wait_time = 1 if not paused else 0
-            key = cv2.waitKey(wait_time) & 0xFF
+            # Handle key input (1ms delay for responsive playback)
+            key = cv2.waitKey(1) & 0xFF
             
             if key == ord('q'):
                 print("Quitting...")
